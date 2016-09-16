@@ -1,0 +1,21 @@
+.listOfActors {
+	
+	
+	list-style-type: none;
+		    padding-left: 0 !important;
+}
+
+.listOfActors li {
+	float: left;
+margin-right: 5px;
+	
+	
+}
+.listOfActors li img{
+	width: 55px;
+	    height: 80px;
+}
+.pic {
+	
+	list-style-type: none;
+}

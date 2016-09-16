@@ -1,0 +1,37 @@
+<!DOCTYPE >
+
+<html ng-app="imdbSearch" >
+	
+	<head>
+		
+		<link rel="stylesheet" href="../css/style.css" />
+		<script src="../js/angular.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.js"></script>
+		<!--app-->
+		<script src="../app/imdb.js"></script>
+		
+		<!--controllers-->
+		<script src="../app/controllers/search_imdb.js"></script>
+		<script>
+		
+		</script>
+	</head>
+	
+	
+	<body>
+		
+		<div  ng-controller="searchInImdb">
+			
+			<div>{{actorName}}</div>
+			
+			<ul>
+				<li ng-repeat="m in resultsMovie">
+
+					{{m.title}}
+				</li>
+			</ul>
+		</div>
+		
+	</body>
+	
+</html>
