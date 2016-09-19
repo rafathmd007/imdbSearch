@@ -6,35 +6,97 @@
 	
 	<head>
 		<title> imdb search</title>
-		
+	<script> onload="localStorage.clear()"</script>
 		<link rel="stylesheet" href="css/style.css" />
 		<script src="js/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 		<!--app-->
 		<script src="app/imdb.js"></script>
 		
 		<!--controllers-->
-		<script src="app/controllers/search_imdb.js"></script>
+		<script src="app/controllers/search_imdbActor.js"></script>
+		<script src="app/controllers/movieSearch.js"></script>
 		
 		
 	</head>
 	
 	
 	<body>
-		<div ng-controller="searchInImdb">
-			<input type="text" ng-model="nameSearch" ng-change="getActors()"/>
-	
-	<ul class="listOfActors">
-		<li ng-repeat="N in results">
-			
-			<img ng-src="http://image.tmdb.org/t/p/w500{{N.profile_path}}"/>
-			<div><a ng-href="pages/movieInActor.html" ng-click="movieOfActor(N.id,N.name)">{{N.name}}</a></div>
-			
-		</li>
 		
-	</ul>
+		<div ng-controller="searchInImdbActor" class="searchImdb">
 			
+			<input class="form-control" type="text" ng-model="nameSearch" ng-change="getActors()" placeholder="Insert actor name"/>
+			
+	
+
+		
+			<table class="table table-bordered">
+				
+				<tr>
+					<td>Actor name</td>
+					<td>Actor img</td>
+					
+					
+					</tr>
+				<tr ng-repeat="N in results">
+					<td><div ng-click="movieOfActor(N.id,N.name)" >{{N.name}}</div></td>
+					<td class="imgInTable"><img ng-src="{{picUrl}}/{{N.profile_path}}"/></td>
+					
+				</tr>
+			</table>
+			
+			
+			
+		
+		
+
+	
+	
+	
+			
+		</div>
+		
+		<div ng-controller="searchInImdbMovie" class="searchImdb" >
+			
+			<input ng-model="movieSearch" class="form-control"  ng-change="getMovie()" placeholder="Insert movie name"/>
+			
+			<div ng-show="!movieLoaded">
+				<table class="table table-bordered">
+				
+				<tr>
+					<td>movie name</td>
+					<td>movie img</td>
+					
+					
+					</tr>
+				<tr ng-repeat="M in resultsMovie">
+					<td><div ng-click="actorOfMovie(M.id)">{{M.title}}</div></td>
+					<td class="imgInTable"><img ng-src="{{picUrl}}/{{M.poster_path}}"/></td>
+					
+				</tr>
+			</table>
+			</div>
+			<div ng-show="movieLoaded">
+			<table class="table table-bordered">
+				
+					<tr >
+						<td>actor name</td>
+						<td>actor piture</td>
+						</tr>
+						<tr ng-repeat="a in actorResult">
+							
+							<td><div> {{a.name}}</div></td>
+							<td class="imgInTable"><img ng-src="{{picUrl}}/{{a.profile_path}}"/></td>
+						</tr>
+					
+					
+					
+				
+				
+			</table>
+			</div>	
 		</div>
 		
 		

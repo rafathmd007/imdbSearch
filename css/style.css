@@ -8,14 +8,22 @@
 .listOfActors li {
 	float: left;
 margin-right: 5px;
-	
-	
 }
-.listOfActors li img{
+	
+.imgInTable img{
 	width: 55px;
 	    height: 80px;
+}
+.table-bordered{
+	    margin-top: 20px;
+	        text-align: center;
 }
 .pic {
 	
 	list-style-type: none;
+}
+
+.searchImdb{
+	float:left;
+	    width: 50%;
 }
